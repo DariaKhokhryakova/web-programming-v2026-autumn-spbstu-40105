@@ -19,13 +19,19 @@ export class Restaurant {
 
 export function groupRestaurantsByMenuSize(restaurants) {
   const result = {};
+
   for (const restaurant of restaurants) {
-    const key = restaurant.menuSize;
-    if (!result[key]) {
-      result[key] = [];
+    const size = Array.isArray(restaurant.menu)
+      ? restaurant.menu.length
+      : restaurant.menuSize;
+
+    if (!result[size]) {
+      result[size] = [];
     }
-    result[key].push(restaurant);
+
+    result[size].push(restaurant);
   }
+
   return result;
 }
 

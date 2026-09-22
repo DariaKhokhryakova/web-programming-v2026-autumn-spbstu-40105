@@ -92,8 +92,8 @@ function createRestaurantCard(restaurant) {
 
     await addDish(restaurant.name, {name, price});
 
-    dishNameInput = '';
-    dishPriceInput = '';
+    dishNameInput.value = '';
+    dishPriceInput.value = '';
   });
 
   card.appendChild(dishForm);
