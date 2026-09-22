@@ -18,21 +18,19 @@ export class Restaurant {
 }
 
 export function groupRestaurantsByMenuSize(restaurants) {
-  const result = {};
+  const groups = new Map();
 
   for (const restaurant of restaurants) {
-    const size = Array.isArray(restaurant.menu)
-      ? restaurant.menu.length
-      : restaurant.menuSize;
+    const size = restaurant.menu.length;
 
-    if (!result[size]) {
-      result[size] = [];
+    if (!groups.has(size)) {
+      groups.set(size, []);
     }
 
-    result[size].push(restaurant);
+    groups.get(size).push(restaurant);
   }
 
-  return result;
+  return groups;
 }
 
 export function getUniqueDishes(restaurants) {
